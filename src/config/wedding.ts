@@ -87,7 +87,7 @@ export const weddingConfig = {
   },
   gift: {
     enabled: true,
-    title: "Hộp Quà Mừng",
+    title: "Quà Mừng",
     subtitle: "MỪNG CƯỚI ĐÔI UYÊN ƯƠNG",
     message:
       "Cảm ơn tình cảm và lời chúc phúc của Quý vị dành cho hai vợ chồng!",

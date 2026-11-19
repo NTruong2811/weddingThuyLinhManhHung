@@ -36,7 +36,7 @@ export function GiftModal({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="Hộp Quà Mừng Cưới"
+      aria-label="Quà Mừng"
     >
       <div
         className="relative max-h-[90vh] w-full max-w-[380px] overflow-y-auto rounded-2xl bg-[#FAF8F3] shadow-2xl ring-1 ring-[#DFD4BF]"
@@ -56,7 +56,7 @@ export function GiftModal({
             <Heart className="h-5 w-5 fill-[#B5945B]/30" />
           </div>
           <h3 className="font-serif-editorial text-lg font-semibold text-[#523E2B]">
-            Hộp Quà Mừng Cưới
+            Quà Mừng
           </h3>
           <p className="mt-1 text-xs text-[#756350]">
             Cảm ơn tình cảm và lời chúc phúc của Quý vị dành cho hai vợ chồng
@@ -72,12 +72,8 @@ export function GiftModal({
                 key={acc.role}
                 className="rounded-xl border border-[#E6DCC8] bg-white p-4 text-center shadow-[0_2px_10px_rgba(82,62,43,0.05)]"
               >
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF5EC] px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-[#96743D]">
-                  <span>{acc.role}</span>
-                </div>
-
                 {acc.qrImage && (
-                  <div className="mx-auto my-3 w-52 overflow-hidden rounded-xl border border-[#E6DCC8] bg-white p-2 shadow-xs">
+                  <div className="mx-auto mb-3 w-52 overflow-hidden rounded-xl border border-[#E6DCC8] bg-white p-2 shadow-xs">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={acc.qrImage}

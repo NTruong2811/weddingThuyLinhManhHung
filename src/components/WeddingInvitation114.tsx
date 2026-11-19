@@ -659,7 +659,7 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 11: "HỘP QUÀ MỪNG" (QR MỪNG CƯỚI CHÚ RỂ KIỀU MẠNH HƯNG)
+            SECTION 11: "QUÀ MỪNG" (QR MỪNG CƯỚI CHÚ RỂ KIỀU MẠNH HƯNG)
            ============================================================ */}
         {weddingConfig.gift.enabled && (
           <section className="px-5 py-9 text-center">
@@ -680,15 +680,10 @@ export function WeddingInvitation114() {
 
               {/* QR Card Container */}
               <div className="mt-6 w-full max-w-[340px] overflow-hidden rounded-2xl border border-[#DFD4BF] bg-white p-5 shadow-[0_4px_20px_rgba(82,62,43,0.07)] ring-1 ring-[#FAF8F3]">
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF5EC] px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-[#96743D]">
-                  <DoubleHeartMini className="h-3.5 w-3.5" />
-                  <span>{weddingConfig.gift.groomBank.role}</span>
-                </div>
-
                 {/* Scannable VietQR Card Image */}
                 <div
                   onClick={() => setGiftModalOpen(true)}
-                  className="group relative mx-auto mt-4 w-full max-w-[230px] cursor-pointer overflow-hidden rounded-xl border border-[#EFE8DC] bg-white p-2 shadow-xs transition hover:border-[#B5945B]"
+                  className="group relative mx-auto w-full max-w-[230px] cursor-pointer overflow-hidden rounded-xl border border-[#EFE8DC] bg-white p-2 shadow-xs transition hover:border-[#B5945B]"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
