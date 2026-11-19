@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm Ivory, Champagne Sand, Antique Gold Foil & Walnut Bronze (from printed card) */
+  --bg-page: #f0ebe1;
+  --bg-card: #faf8f3;
+  --bg-cream-tint: #f5f0e6;
+  --champagne-sand: #e6dcc8;
+  --gold-foil: #b5945b;
+  --gold-bronze: #96743d;
+  --walnut-ink: #523e2b;
+  --espresso-deep: #3d2e1f;
+  --taupe-secondary: #756350;
+  --border-sand: #dfd4bf;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-page);
+    color: var(--espresso-deep);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: var(--espresso-deep);
+    font-family: var(--font-quicksand), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+.font-serif-editorial {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-display-serif {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-dancing), cursive;
+}
+
+.font-calligraphy {
+  font-family: var(--font-great-vibes), var(--font-dancing), cursive;
+}
+
+.font-sans-soft {
+  font-family: var(--font-quicksand), system-ui, sans-serif;
+}
+
+.font-times {
+  font-family: "Times New Roman", var(--font-playfair), Georgia, serif;
+}
+
+/* Warm cotton-linen paper desktop backdrop matching the printed card stock */
+.ivory-paper-bg {
+  background-color: #efeae0;
+  background-image: radial-gradient(
+      rgba(181, 148, 91, 0.14) 1px,
+      transparent 1px
+    ),
+    radial-gradient(rgba(82, 62, 43, 0.04) 1px, #efeae0 1px);
+  background-size: 26px 26px;
+  background-position: 0 0, 13px 13px;
+}
+
+/* Subtle warm cotton paper card surface */
+.card-cotton-surface {
+  background-color: #faf8f3;
+  background-image: radial-gradient(
+    rgba(181, 148, 91, 0.04) 0.75px,
+    transparent 0.75px
+  );
+  background-size: 18px 18px;
+}
+
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes gift-wobble {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-4deg) scale(1.03);
+  }
+  40% {
+    transform: rotate(4deg) scale(1.03);
+  }
+  60% {
+    transform: rotate(-2.5deg) scale(1.01);
+  }
+  80% {
+    transform: rotate(2deg) scale(1);
+  }
+}
+
+@keyframes seal-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(82, 62, 43, 0.24),
+      0 0 0 0 rgba(181, 148, 91, 0.38);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 10px 28px rgba(82, 62, 43, 0.32),
+      0 0 0 12px rgba(181, 148, 91, 0);
+  }
+}
+
+.animate-vinyl-spin {
+  animation: vinyl-spin 5s linear infinite;
+}
+
+.animate-heart-beat {
+  animation: heart-beat 2.2s ease-in-out infinite;
+}
+
+.animate-gift-wobble {
+  animation: gift-wobble 2.6s ease-in-out infinite;
+}
+
+.animate-seal-pulse {
+  animation: seal-pulse 2.4s ease-in-out infinite;
+}
+
+/* Custom slim warm-sand scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0ebe1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbb99a;
+  border-radius: 999px;
+}
