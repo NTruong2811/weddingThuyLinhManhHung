@@ -181,18 +181,18 @@ export function WeddingInvitation114() {
             SECTION 3: ASYMMETRIC TWO-FAMILY & COUPLE SHOWCASE (ZIG-ZAG)
            ============================================================ */}
         <section className="space-y-9 px-5 py-6">
-          {/* Row 1: Bride Photo (left, champagne-sand mat) + Nhà Gái / Cô dâu (right) */}
+          {/* Row 1: Groom Photo (left, champagne-sand mat) + Nhà Trai / Chú rể (right) */}
           <div className="grid grid-cols-[0.96fr_1.04fr] items-center gap-4">
             <Reveal direction="right">
               <div
                 className="cursor-pointer bg-[#E6DCC8] p-[5px] shadow-[0_8px_22px_rgba(82,62,43,0.09)]"
-                onClick={() => openPhotoBySrc(weddingConfig.gallery[1].src)}
+                onClick={() => openPhotoBySrc(weddingConfig.gallery[3].src)}
               >
                 <div className="aspect-[2/3] w-full overflow-hidden bg-white">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={weddingConfig.photos.bride}
-                    alt={`Cô dâu ${weddingConfig.couple.brideDisplay}`}
+                    src={weddingConfig.photos.groom}
+                    alt={`Chú rể ${weddingConfig.couple.groomDisplay}`}
                     className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
@@ -200,27 +200,6 @@ export function WeddingInvitation114() {
             </Reveal>
 
             <Reveal direction="left" delay={120} className="flex flex-col items-center text-center">
-              <p className="font-sans-soft text-[12px] font-bold tracking-[0.16em] text-[#96743D]">
-                {weddingConfig.parents.brideSide.label}
-              </p>
-              <p className="mt-2 font-sans-soft text-[11px] font-semibold leading-relaxed text-[#3D2E1F]">
-                {weddingConfig.parents.brideSide.father}
-                <br />
-                {weddingConfig.parents.brideSide.mother}
-              </p>
-
-              <div className="mt-6 flex flex-col items-center">
-                <span className="font-script text-[18px] text-[#7A6247]">Cô dâu</span>
-                <span className="mt-1 font-calligraphy text-[34px] leading-tight text-[#523E2B]">
-                  {weddingConfig.couple.brideDisplay}
-                </span>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Row 2 (Mirrored): Nhà Trai / Chú rể (left) + Groom Photo (right, champagne-sand mat) */}
-          <div className="grid grid-cols-[1.04fr_0.96fr] items-center gap-4">
-            <Reveal direction="right" delay={120} className="flex flex-col items-center text-center">
               <p className="font-sans-soft text-[12px] font-bold tracking-[0.16em] text-[#96743D]">
                 {weddingConfig.parents.groomSide.label}
               </p>
@@ -237,17 +216,38 @@ export function WeddingInvitation114() {
                 </span>
               </div>
             </Reveal>
+          </div>
+
+          {/* Row 2 (Mirrored): Nhà Gái / Cô dâu (left) + Bride Photo (right, champagne-sand mat) */}
+          <div className="grid grid-cols-[1.04fr_0.96fr] items-center gap-4">
+            <Reveal direction="right" delay={120} className="flex flex-col items-center text-center">
+              <p className="font-sans-soft text-[12px] font-bold tracking-[0.16em] text-[#96743D]">
+                {weddingConfig.parents.brideSide.label}
+              </p>
+              <p className="mt-2 font-sans-soft text-[11px] font-semibold leading-relaxed text-[#3D2E1F]">
+                {weddingConfig.parents.brideSide.father}
+                <br />
+                {weddingConfig.parents.brideSide.mother}
+              </p>
+
+              <div className="mt-6 flex flex-col items-center">
+                <span className="font-script text-[18px] text-[#7A6247]">Cô dâu</span>
+                <span className="mt-1 font-calligraphy text-[34px] leading-tight text-[#523E2B]">
+                  {weddingConfig.couple.brideDisplay}
+                </span>
+              </div>
+            </Reveal>
 
             <Reveal direction="left">
               <div
                 className="cursor-pointer bg-[#E6DCC8] p-[5px] shadow-[0_8px_22px_rgba(82,62,43,0.09)]"
-                onClick={() => openPhotoBySrc(weddingConfig.gallery[3].src)}
+                onClick={() => openPhotoBySrc(weddingConfig.gallery[1].src)}
               >
                 <div className="aspect-[2/3] w-full overflow-hidden bg-white">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={weddingConfig.photos.groom}
-                    alt={`Chú rể ${weddingConfig.couple.groomDisplay}`}
+                    src={weddingConfig.photos.bride}
+                    alt={`Cô dâu ${weddingConfig.couple.brideDisplay}`}
                     className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
