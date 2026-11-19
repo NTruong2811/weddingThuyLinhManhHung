@@ -106,9 +106,9 @@ export function WeddingInvitation114() {
               Save The Date
             </p>
 
-            {/* Uppercase modern serif couple header (Bride & Groom — Nhà Gái) */}
+            {/* Uppercase modern serif couple header (Groom & Bride) */}
             <h1 className="mt-3 font-display-serif text-[23px] font-semibold uppercase tracking-[0.16em] text-[#3D2E1F]">
-              {weddingConfig.couple.brideUpper} &amp; {weddingConfig.couple.groomUpper}
+              {weddingConfig.couple.groomUpper} &amp; {weddingConfig.couple.brideUpper}
             </h1>
 
             {/* Central sharp-edged rectangular vertical studio portrait (~70% width) */}
@@ -119,7 +119,7 @@ export function WeddingInvitation114() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={weddingConfig.photos.hero}
-                alt={`${weddingConfig.couple.brideDisplay} & ${weddingConfig.couple.groomDisplay}`}
+                alt={`${weddingConfig.couple.groomDisplay} & ${weddingConfig.couple.brideDisplay}`}
                 className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.025]"
               />
             </div>
@@ -266,8 +266,8 @@ export function WeddingInvitation114() {
               Thư Mời
             </h2>
             <p className="mt-2 font-sans-soft text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6B553E]">
-              THAM DỰ LỄ VU QUY {weddingConfig.couple.brideUpper} &amp;{" "}
-              {weddingConfig.couple.groomUpper}
+              THAM DỰ LỄ THÀNH HÔN {weddingConfig.couple.groomUpper} &amp;{" "}
+              {weddingConfig.couple.brideUpper}
             </p>
           </Reveal>
 
@@ -380,7 +380,7 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 6: "LỄ VU QUY" (CHỦ NHẬT 29.11.2026) + ARCHED CHAMPAGNE VENUE CARD
+            SECTION 6: "LỄ THÀNH HÔN" (CHỦ NHẬT 29.11.2026) + ARCHED CHAMPAGNE VENUE CARD
            ============================================================ */}
         <section className="px-5 py-6 text-center">
           <Reveal className="flex flex-col items-center">
@@ -511,7 +511,7 @@ export function WeddingInvitation114() {
               Save The Date
             </p>
             <p className="mt-2 font-sans-soft text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7A6247]">
-              LƯU LẠI NGÀY HẠNH PHÚC CÙNG {weddingConfig.couple.brideUpper} &amp; {weddingConfig.couple.groomUpper}
+              LƯU LẠI NGÀY HẠNH PHÚC CÙNG {weddingConfig.couple.groomUpper} &amp; {weddingConfig.couple.brideUpper}
             </p>
 
             {/* Combined Luxury Art Card (Proposal Photo + November 2026 Calendar) */}
@@ -524,7 +524,7 @@ export function WeddingInvitation114() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={weddingConfig.photos.proposal}
-                  alt={`Save The Date - ${weddingConfig.couple.brideDisplay} & ${weddingConfig.couple.groomDisplay}`}
+                  alt={`Save The Date - ${weddingConfig.couple.groomDisplay} & ${weddingConfig.couple.brideDisplay}`}
                   className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 {/* Subtle bottom gradient & calligraphy badge */}
@@ -598,7 +598,7 @@ export function WeddingInvitation114() {
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#B5945B]" />
-                    <span>29/11: Lễ Vu Quy</span>
+                    <span>29/11: Lễ Thành Hôn</span>
                   </span>
                 </div>
               </div>
@@ -752,7 +752,7 @@ export function WeddingInvitation114() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={weddingConfig.photos.closing}
-              alt={`${weddingConfig.couple.brideDisplay} & ${weddingConfig.couple.groomDisplay}`}
+              alt={`${weddingConfig.couple.groomDisplay} & ${weddingConfig.couple.brideDisplay}`}
               className="h-full w-full object-cover object-top"
             />
 
@@ -782,7 +782,7 @@ export function WeddingInvitation114() {
           <div className="flex flex-col items-center text-center">
             <FooterCoupleHeart className="h-28 w-32" />
             <p className="mt-2 font-display-serif text-[13px] font-semibold tracking-[0.22em] text-[#7A5D30]">
-              {weddingConfig.couple.brideUpper} &amp; {weddingConfig.couple.groomUpper}
+              {weddingConfig.couple.groomUpper} &amp; {weddingConfig.couple.brideUpper}
             </p>
             <p className="mt-1 font-sans-soft text-[11px] tracking-[0.18em] text-[#8E7555]">
               {weddingConfig.hero.dateDot}

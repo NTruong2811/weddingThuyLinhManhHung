@@ -49,7 +49,7 @@ export function SlidingDoorsCover({
       onClick={handleOpen}
       role="dialog"
       aria-modal="true"
-      aria-label={`Mở thiệp cưới ${weddingConfig.couple.brideDisplay} và ${weddingConfig.couple.groomDisplay}`}
+      aria-label={`Mở thiệp cưới ${weddingConfig.couple.groomDisplay} và ${weddingConfig.couple.brideDisplay}`}
       className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden ${
         isOpening ? "pointer-events-none" : "cursor-pointer"
       }`}

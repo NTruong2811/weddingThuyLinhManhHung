@@ -43,7 +43,7 @@ const quicksand = Quicksand({
   display: "swap",
 });
 
-const coupleTitle = `${weddingConfig.couple.brideDisplay} & ${weddingConfig.couple.groomDisplay}`;
+const coupleTitle = `${weddingConfig.couple.groomDisplay} & ${weddingConfig.couple.brideDisplay}`;
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -55,10 +55,10 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `Thiệp Cưới ${coupleTitle} | ${weddingConfig.hero.dateDot}`,
-  description: `Trân trọng kính mời Quý vị tới mừng Lễ Vu Quy của ${coupleTitle} vào ngày ${weddingConfig.hero.dateDot} tại ${weddingConfig.ceremony.venueName}.`,
+  description: `Trân trọng kính mời Quý vị tới mừng ${weddingConfig.ceremony.title} của ${coupleTitle} vào ngày ${weddingConfig.hero.dateDot} tại ${weddingConfig.ceremony.venueName}.`,
   openGraph: {
     title: `Thiệp Cưới ${coupleTitle} | Save The Date ${weddingConfig.hero.dateDot}`,
-    description: `Trân trọng kính mời tới dự bữa tiệc thân mật & mừng Lễ Vu Quy • ${weddingConfig.ceremony.address}`,
+    description: `Trân trọng kính mời tới dự bữa tiệc thân mật & mừng ${weddingConfig.ceremony.title} • ${weddingConfig.ceremony.address}`,
     type: "website",
     locale: "vi_VN",
     images: [

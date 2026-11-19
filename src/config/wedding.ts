@@ -1,6 +1,6 @@
 export const weddingConfig = {
   /**
-   * Thông tin thật trích từ thiệp cứng của Thùy Linh & Mạnh Hưng (Lễ Vu Quy - Nhà Gái).
+   * Thông tin thiệp cưới của Mạnh Hưng & Thùy Linh (Lễ Thành Hôn - Nhà Trai).
    * Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hưng (đã tối ưu WebP siêu nhẹ).
    */
   couple: {
@@ -75,7 +75,7 @@ export const weddingConfig = {
     highlightDay: 29,
     bannerText: "11.2026",
   },
-  /** ISO 8601 timestamp (+07:00) đếm ngược tới Lễ Vu Quy 14:30 ngày 29.11.2026 */
+  /** ISO 8601 timestamp (+07:00) đếm ngược tới Lễ Thành Hôn 14:30 ngày 29.11.2026 */
   countdownTargetIso: "2026-11-29T14:30:00+07:00",
   closing: {
     line1:
