@@ -1,28 +1,26 @@
 export const weddingConfig = {
   /**
-   * Thông tin thật trích từ thiệp cứng của Thùy Linh & Mạnh Hùng (Lễ Vu Quy - Nhà Gái).
-   * Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hùng (đã tối ưu WebP siêu nhẹ).
+   * Thông tin thật trích từ thiệp cứng của Thùy Linh & Mạnh Hưng (Lễ Vu Quy - Nhà Gái).
+   * Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hưng (đã tối ưu WebP siêu nhẹ).
    */
   couple: {
     brideDisplay: "Thùy Linh",
     brideUpper: "THÙY LINH",
     brideInitial: "L",
-    groomDisplay: "Mạnh Hùng",
-    groomUpper: "MẠNH HÙNG",
+    groomDisplay: "Mạnh Hưng",
+    groomUpper: "MẠNH HƯNG",
     groomInitial: "H",
   },
   parents: {
     brideSide: {
       label: "NHÀ GÁI",
-      father: "ÔNG : NGUYỄN CÔNG CHÍNH",
+      father: "ÔNG : NGUYỄN CÔNG CHỈNH",
       mother: "BÀ : NGUYỄN THỊ LIÊN",
-      location: "Phượng Thiên, Tam Hưng, Hà Nội",
     },
     groomSide: {
       label: "NHÀ TRAI",
       father: "ÔNG : KIỀU HỮU MẠNH",
       mother: "BÀ : PHẠM QUỲNH HƯƠNG",
-      location: "Hà Nội",
     },
   },
   hero: {
@@ -88,7 +86,7 @@ export const weddingConfig = {
     line3: "Hẹn gặp bạn trong ngày trọng đại của chúng mình",
   },
   gift: {
-    enabled: true,
+    enabled: false,
     brideBank: {
       role: "Mừng cưới Cô Dâu",
       bankName: "Vietcombank",
@@ -103,36 +101,37 @@ export const weddingConfig = {
     },
   },
   audioSrc: "/audio/wedding-music1.mp3",
-  /** Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hùng (WebP tối ưu) */
+  /** Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hưng (WebP tối ưu) */
   photos: {
-    hero: "/images/photos/HAU07461.webp",
+    hero: "/images/photos/HAU07788.webp",
     bride: "/images/photos/bride-portrait.webp",
     groom: "/images/photos/groom-portrait.webp",
+    proposal: "/images/photos/HAU07597.webp",
     triptych: [
       "/images/photos/HAU07597.webp",
       "/images/photos/HAU07659.webp",
       "/images/photos/HAU07843.webp",
     ] as const,
     albumGrid: [
-      "/images/photos/HAU07788.webp",
+      "/images/photos/HAU07659.webp",
+      "/images/photos/HAU07461.webp",
+      "/images/photos/HAU07843.webp",
       "/images/photos/HAU07875.webp",
       "/images/photos/HAU07897.webp",
-      "/images/photos/HAU07919.webp",
       "/images/photos/HAU07925.webp",
-      "/images/photos/HAU08008.webp",
     ] as const,
     closing: "/images/photos/HAU08008.webp",
   },
   gallery: [
-    { src: "/images/photos/HAU07461.webp", alt: "Thùy Linh & Mạnh Hùng - Trọn vẹn hạnh phúc" },
-    { src: "/images/photos/HAU07597.webp", alt: "Thùy Linh & Mạnh Hùng - Khoảnh khắc cầu hôn ngọt ngào" },
-    { src: "/images/photos/HAU07659.webp", alt: "Thùy Linh & Mạnh Hùng - Chiếc nhẫn trăm năm" },
-    { src: "/images/photos/HAU07788.webp", alt: "Thùy Linh & Mạnh Hùng - Thanh lịch & Trang trọng" },
-    { src: "/images/photos/HAU07843.webp", alt: "Thùy Linh & Mạnh Hùng - Nụ cười ngọt ngào" },
-    { src: "/images/photos/HAU07875.webp", alt: "Thùy Linh & Mạnh Hùng - Niềm vui rạng rỡ" },
-    { src: "/images/photos/HAU07897.webp", alt: "Thùy Linh & Mạnh Hùng - Trái tim yêu thương" },
-    { src: "/images/photos/HAU07919.webp", alt: "Thùy Linh & Mạnh Hùng - Ánh mắt yêu thương" },
-    { src: "/images/photos/HAU07925.webp", alt: "Thùy Linh & Mạnh Hùng - Bên nhau trọn đời" },
-    { src: "/images/photos/HAU08008.webp", alt: "Thùy Linh & Mạnh Hùng - Nàng công chúa của anh" },
+    { src: "/images/photos/HAU07461.webp", alt: "Thùy Linh & Mạnh Hưng - Trọn vẹn hạnh phúc" },
+    { src: "/images/photos/HAU07597.webp", alt: "Thùy Linh & Mạnh Hưng - Khoảnh khắc cầu hôn ngọt ngào" },
+    { src: "/images/photos/HAU07659.webp", alt: "Thùy Linh & Mạnh Hưng - Chiếc nhẫn trăm năm" },
+    { src: "/images/photos/HAU07788.webp", alt: "Thùy Linh & Mạnh Hưng - Thanh lịch & Trang trọng" },
+    { src: "/images/photos/HAU07843.webp", alt: "Thùy Linh & Mạnh Hưng - Nụ cười ngọt ngào" },
+    { src: "/images/photos/HAU07875.webp", alt: "Thùy Linh & Mạnh Hưng - Niềm vui rạng rỡ" },
+    { src: "/images/photos/HAU07897.webp", alt: "Thùy Linh & Mạnh Hưng - Trái tim yêu thương" },
+    { src: "/images/photos/HAU07919.webp", alt: "Thùy Linh & Mạnh Hưng - Ánh mắt yêu thương" },
+    { src: "/images/photos/HAU07925.webp", alt: "Thùy Linh & Mạnh Hưng - Bên nhau trọn đời" },
+    { src: "/images/photos/HAU08008.webp", alt: "Thùy Linh & Mạnh Hưng - Nàng công chúa của anh" },
   ],
 } as const;

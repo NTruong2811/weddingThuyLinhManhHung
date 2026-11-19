@@ -4,7 +4,7 @@ import React from "react";
 
 /**
  * Gold-foil H & L botanical circular wreath faithfully inspired by the front cover
- * of Thùy Linh & Mạnh Hùng's printed wedding invitation.
+ * of Thùy Linh & Mạnh Hưng's printed wedding invitation.
  */
 export function HLMonogramWreath({
   leftLetter = "H",

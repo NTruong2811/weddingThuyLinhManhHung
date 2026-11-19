@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { CheckCircle2, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { weddingConfig } from "@/config/wedding";
 import { useWeddingMusic } from "@/hooks/useWeddingMusic";
 import {
@@ -9,7 +9,6 @@ import {
   CoupleDividerIllustration,
   DoubleHeartMini,
   FooterCoupleHeart,
-  GiftHeartBox3D,
   HLMonogramWreath,
   RoseStemSketch,
   WatercolorBlossomCorner,
@@ -22,7 +21,6 @@ import { Reveal } from "./Reveal";
 import { AlbumCarousel } from "./AlbumCarousel";
 import { Countdown } from "./Countdown";
 import { Lightbox } from "./Lightbox";
-import { GiftModal } from "./GiftModal";
 
 function buildCalendarCells(year: number, month1Based: number) {
   // Monday-first Vietnamese calendar: T2 T3 T4 T5 T6 T7 CN
@@ -43,19 +41,12 @@ export function WeddingInvitation114() {
 
   const [guestName, setGuestName] = useState<string | undefined>(undefined);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [giftModalOpen, setGiftModalOpen] = useState(false);
-
-  const [rsvpName, setRsvpName] = useState("");
-  const [rsvpStatus, setRsvpStatus] = useState<"yes" | "no">("yes");
-  const [rsvpCount, setRsvpCount] = useState("1");
-  const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const guest = params.get("guest")?.trim();
     if (guest) {
       setGuestName(guest);
-      setRsvpName(guest);
     }
   }, []);
 
@@ -71,12 +62,6 @@ export function WeddingInvitation114() {
   const openPhotoBySrc = (src: string) => {
     const idx = weddingConfig.gallery.findIndex((g) => g.src === src);
     setLightboxIndex(idx >= 0 ? idx : 0);
-  };
-
-  const handleRsvpSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!rsvpName.trim()) return;
-    setRsvpSubmitted(true);
   };
 
   return (
@@ -209,11 +194,8 @@ export function WeddingInvitation114() {
                 <br />
                 {weddingConfig.parents.brideSide.mother}
               </p>
-              <p className="mt-1 font-sans-soft text-[10.5px] italic text-[#756350]">
-                {weddingConfig.parents.brideSide.location}
-              </p>
 
-              <div className="mt-7 flex flex-col items-center">
+              <div className="mt-6 flex flex-col items-center">
                 <span className="font-script text-[18px] text-[#7A6247]">Cô dâu</span>
                 <span className="mt-1 font-calligraphy text-[34px] leading-tight text-[#523E2B]">
                   {weddingConfig.couple.brideDisplay}
@@ -233,11 +215,8 @@ export function WeddingInvitation114() {
                 <br />
                 {weddingConfig.parents.groomSide.mother}
               </p>
-              <p className="mt-1 font-sans-soft text-[10.5px] italic text-[#756350]">
-                {weddingConfig.parents.groomSide.location}
-              </p>
 
-              <div className="mt-7 flex flex-col items-center">
+              <div className="mt-6 flex flex-col items-center">
                 <span className="font-script text-[18px] text-[#7A6247]">Chú rể</span>
                 <span className="mt-1 font-calligraphy text-[34px] leading-tight text-[#523E2B]">
                   {weddingConfig.couple.groomDisplay}
@@ -264,12 +243,12 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 4: "THƯ MỜI" + STAGGERED 3-PHOTO TRIPTYCH + GUEST NAME
+            SECTION 4: "THƯ MỜI" — FORMAL INVITATION LETTER
            ============================================================ */}
-        <section className="px-5 py-9 text-center">
+        <section className="px-5 py-8 text-center">
           <Reveal className="flex flex-col items-center">
             <span className="h-[1px] w-24 bg-[#8E7555]/80" />
-            <h2 className="mt-3 font-script text-[36px] font-medium leading-none text-[#523E2B]">
+            <h2 className="mt-3 font-script text-[38px] font-medium leading-none text-[#523E2B]">
               Thư Mời
             </h2>
             <p className="mt-2 font-sans-soft text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6B553E]">
@@ -278,43 +257,41 @@ export function WeddingInvitation114() {
             </p>
           </Reveal>
 
-          {/* 3-Column Staggered Triptych (middle photo offset downward) */}
-          <div className="mt-6 grid grid-cols-3 items-start gap-2.5 pb-4">
-            {weddingConfig.photos.triptych.map((src, idx) => (
-              <Reveal
-                key={src}
-                direction="up"
-                delay={idx * 120}
-                className={idx === 1 ? "mt-4" : ""}
-              >
-                <div
-                  className="aspect-[2/3] w-full cursor-pointer overflow-hidden bg-[#EFEAE0] shadow-[0_8px_20px_rgba(61,46,31,0.10)] ring-1 ring-[#E6DCC8]"
-                  onClick={() => openPhotoBySrc(src)}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={src}
-                    alt={`Ảnh thiệp mời ${idx + 1}`}
-                    className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.04]"
+          {/* Elegant Ivory Invitation Stationery Card */}
+          <Reveal delay={120} className="mt-6 flex justify-center">
+            <div className="w-full max-w-[360px] rounded-[16px] bg-[#FAF8F3] px-5 py-7 shadow-[0_12px_32px_rgba(61,46,31,0.08)] ring-1 ring-[#DFD4BF]">
+              <div className="flex flex-col items-center text-center">
+                {/* Gold Seal Monogram */}
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F3ECE0] text-[#96743D] shadow-xs ring-1 ring-[#DFD4BF]">
+                  <HLMonogramWreath
+                    leftLetter={weddingConfig.couple.groomInitial}
+                    rightLetter={weddingConfig.couple.brideInitial}
+                    className="h-12 w-12"
                   />
                 </div>
-              </Reveal>
-            ))}
-          </div>
 
-          {/* Personalized Guest Greeting */}
-          <Reveal delay={140} className="mt-6 flex flex-col items-center">
-            <p className="font-sans-soft text-[11.5px] font-bold uppercase tracking-[0.16em] text-[#523E2B]">
-              TRÂN TRỌNG KÍNH MỜI
-            </p>
-            <p className="mt-2 font-script text-[34px] font-semibold leading-tight text-[#96743D]">
-              {guestName || weddingConfig.defaultGuestName}
-            </p>
-            <p className="mt-2 font-sans-soft text-[11px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-[#6B553E]">
-              TỚI DỰ BỮA TIỆC THÂN MẬT
-              <br />
-              MỪNG LỄ THÀNH HÔN CÙNG GIA ĐÌNH
-            </p>
+                <p className="mt-4 font-sans-soft text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#7A6247]">
+                  TRÂN TRỌNG KÍNH MỜI
+                </p>
+                <p className="mt-2 font-script text-[36px] font-semibold leading-tight text-[#523E2B]">
+                  {guestName || weddingConfig.defaultGuestName}
+                </p>
+
+                <div className="my-3.5 h-[1px] w-20 bg-[#B5945B]/60" />
+
+                <p className="font-sans-soft text-[11.5px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-[#6B553E]">
+                  TỚI DỰ BỮA TIỆC THÂN MẬT
+                  <br />
+                  &amp; LỄ THÀNH HÔN CÙNG GIA ĐÌNH CHÚNG TÔI
+                </p>
+
+                <p className="mt-4 font-serif-editorial text-[13px] italic leading-relaxed text-[#756350]">
+                  Sự hiện diện của quý khách là niềm vinh hạnh lớn nhất
+                  <br />
+                  đối với gia đình chúng tôi!
+                </p>
+              </div>
+            </div>
           </Reveal>
         </section>
 
@@ -430,51 +407,54 @@ export function WeddingInvitation114() {
             </p>
           </Reveal>
 
-          {/* Signature Arched Champagne-Sand (#E6DCC8) Venue & Google Map Card */}
-          <Reveal delay={140} className="mt-7 flex justify-center">
-            <div className="w-[94%] rounded-t-[999px] bg-[#E6DCC8] px-5 pb-5 pt-11 text-center shadow-[0_12px_30px_rgba(82,62,43,0.10)] ring-1 ring-[#D7C9AE]">
-              <p className="font-script text-[32px] font-medium leading-none text-[#523E2B]">
-                Địa điểm tổ chức
-              </p>
-
-              {/* Venue Info with Ivory Map Pin */}
-              <div className="mt-5 flex items-center justify-center gap-3 text-left">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FAF8F3] text-[#96743D] shadow-xs">
+          {/* Enhanced High-Contrast Venue & Google Map Card */}
+          <Reveal delay={140} className="mt-8 flex justify-center">
+            <div className="w-[94%] max-w-[390px] overflow-hidden rounded-[24px] bg-[#FAF8F3] p-5 text-center shadow-[0_14px_38px_rgba(61,46,31,0.11)] ring-1 ring-[#DFD4BF]">
+              {/* Header Icon & Title */}
+              <div className="flex flex-col items-center">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#EFE7D7] text-[#96743D] shadow-xs">
                   <MapPin className="h-5 w-5" />
-                </div>
-                <div className="text-center">
-                  <p className="font-serif-editorial text-[16px] font-bold uppercase tracking-[0.06em] text-[#3D2E1F]">
-                    {weddingConfig.ceremony.venueName}
-                  </p>
-                  <p className="mt-0.5 font-serif-editorial text-[12.5px] font-semibold tracking-[0.12em] text-[#523E2B]">
-                    {weddingConfig.ceremony.hallName}
-                  </p>
-                  <p className="mt-0.5 font-sans-soft text-[11.5px] text-[#523E2B]/90">
-                    {weddingConfig.ceremony.address}
-                  </p>
-                </div>
+                </span>
+                <p className="mt-2.5 font-script text-[34px] font-medium leading-tight text-[#523E2B]">
+                  Địa điểm tổ chức
+                </p>
+                <div className="mt-1 h-[1px] w-16 bg-[#B5945B]/60" />
               </div>
 
-              {/* Ivory Pill CTA Button: XEM CHỈ ĐƯỜNG */}
-              <a
-                href={weddingConfig.ceremony.mapDirectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center justify-center rounded-full bg-[#FAF8F3] px-7 py-2.5 font-serif-editorial text-[11.5px] font-bold uppercase tracking-[0.16em] text-[#523E2B] shadow-[0_4px_14px_rgba(82,62,43,0.14)] transition hover:bg-[#96743D] hover:text-white"
-              >
-                XEM CHỈ ĐƯỜNG
-              </a>
+              {/* Venue Details */}
+              <div className="mt-4 flex flex-col items-center">
+                <p className="font-serif-editorial text-[18px] font-bold uppercase tracking-[0.12em] text-[#3D2E1F]">
+                  {weddingConfig.ceremony.venueName}
+                </p>
+                <p className="mt-1 font-serif-editorial text-[14px] font-semibold tracking-[0.16em] text-[#96743D]">
+                  {weddingConfig.ceremony.hallName}
+                </p>
+                <p className="mt-1.5 font-sans-soft text-[13px] font-medium leading-relaxed text-[#523E2B]">
+                  {weddingConfig.ceremony.address}
+                </p>
+              </div>
 
-              {/* Embedded Google Maps iframe inside lower arch */}
-              <div className="mt-5 overflow-hidden rounded-[6px] border border-[#FAF8F3] bg-white shadow-inner">
+              {/* High-visibility Embedded Google Maps iframe */}
+              <div className="mt-5 overflow-hidden rounded-[14px] bg-white shadow-inner ring-1 ring-[#DFD4BF]">
                 <iframe
-                  title="Bản đồ Tư Gia Nhà Gái"
+                  title="Bản đồ chỉ đường tới Tư Gia Nhà Gái"
                   src={weddingConfig.ceremony.mapEmbedUrl}
-                  className="h-[195px] w-full border-0"
+                  className="h-[230px] w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+
+              {/* Prominent Antique-Gold Navigation CTA Button right under map */}
+              <a
+                href={weddingConfig.ceremony.mapDirectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#B5945B] py-3 font-sans-soft text-[13px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(181,148,91,0.30)] transition hover:bg-[#96743D] active:scale-[0.99]"
+              >
+                <MapPin className="h-4 w-4 shrink-0" />
+                <span>Xem chỉ đường trên Google Maps</span>
+              </a>
             </div>
           </Reveal>
         </section>
@@ -503,72 +483,104 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 8: "SAVE THE DATE" MONTHLY CALENDAR (THÁNG 11.2026)
+            SECTION 8: "SAVE THE DATE" — PROPOSAL PHOTO + NOVEMBER 2026 CALENDAR
            ============================================================ */}
-        <section className="py-6 text-center">
-          <Reveal>
-            <p className="font-calligraphy text-[44px] leading-none text-[#523E2B]">
+        <section className="px-5 py-9 text-center">
+          <Reveal className="flex flex-col items-center">
+            <p className="font-calligraphy text-[48px] leading-none text-[#523E2B]">
               Save The Date
             </p>
+            <p className="mt-2 font-sans-soft text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7A6247]">
+              LƯU LẠI NGÀY HẠNH PHÚC CÙNG {weddingConfig.couple.brideUpper} &amp; {weddingConfig.couple.groomUpper}
+            </p>
 
-            {/* Full-width Champagne-Sand Header Strip (#E6DCC8) */}
-            <div className="mt-3 w-full bg-[#E6DCC8] py-2.5 pl-[10%] text-left">
-              <span className="font-serif-editorial text-[28px] font-semibold leading-none tracking-[0.06em] text-[#523E2B]">
-                {weddingConfig.calendar.bannerText}
-              </span>
-            </div>
-
-            {/* 7-Column Calendar Grid (Nov 2026: Day 28 soft ring, Day 29 gold heart) */}
-            <div className="mx-auto mt-5 max-w-[360px] px-5">
-              <div className="grid grid-cols-7 gap-y-2 text-center font-sans-soft text-[12px] font-bold text-[#523E2B]">
-                {["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map((dayLabel) => (
-                  <span key={dayLabel}>{dayLabel}</span>
-                ))}
+            {/* Combined Luxury Art Card (Proposal Photo + November 2026 Calendar) */}
+            <div className="mt-6 w-full max-w-[360px] overflow-hidden rounded-[16px] bg-[#FAF8F3] p-3 shadow-[0_16px_40px_rgba(61,46,31,0.12)] ring-1 ring-[#DFD4BF]">
+              {/* Proposal Photo (HAU07597 - "She And I Are Getting Married") */}
+              <div
+                className="group relative aspect-[2/3] w-full cursor-pointer overflow-hidden rounded-[10px] bg-[#EFEAE0]"
+                onClick={() => openPhotoBySrc(weddingConfig.photos.proposal)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={weddingConfig.photos.proposal}
+                  alt={`Save The Date - ${weddingConfig.couple.brideDisplay} & ${weddingConfig.couple.groomDisplay}`}
+                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+                {/* Subtle bottom gradient & calligraphy badge */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2C2117]/85 via-[#2C2117]/40 to-transparent px-4 pb-3.5 pt-10 text-center">
+                  <p className="font-calligraphy text-[20px] text-[#FAF8F3] drop-shadow-sm">
+                    She And I Are Getting Married
+                  </p>
+                  <p className="mt-0.5 font-sans-soft text-[9.5px] uppercase tracking-[0.2em] text-[#E6DCC8]/90">
+                    Chạm để xem ảnh toàn màn hình
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-3 grid grid-cols-7 gap-y-2.5 text-center font-sans-soft text-[13.5px] font-medium text-[#523E2B]">
-                {calendarCells.map((day, idx) => {
-                  const isHighlight = day === weddingConfig.calendar.highlightDay;
-                  const isPartyDay = day === weddingConfig.calendar.partyDay;
-                  return (
-                    <div
-                      key={idx}
-                      className="relative flex h-8 items-center justify-center"
-                    >
-                      {isHighlight && (
-                        <WatercolorHeartStamp className="animate-heart-beat absolute h-9 w-9" />
-                      )}
-                      {isPartyDay && !isHighlight && (
-                        <span
-                          className="absolute h-7 w-7 rounded-full border border-dashed border-[#B5945B] bg-[#F1E8D7]/60"
-                          aria-hidden="true"
-                        />
-                      )}
-                      <span
-                        className={
-                          isHighlight
-                            ? "relative z-10 font-bold text-[#523E2B]"
-                            : isPartyDay
-                              ? "relative z-10 font-bold text-[#96743D]"
-                              : ""
-                        }
+              {/* Integrated Calendar Header Strip (#E6DCC8) */}
+              <div className="mt-4 flex items-center justify-between rounded-[8px] bg-[#E6DCC8] px-4 py-2.5 text-left">
+                <span className="font-serif-editorial text-[22px] font-bold tracking-[0.06em] text-[#523E2B]">
+                  {weddingConfig.calendar.bannerText}
+                </span>
+                <span className="font-sans-soft text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7A6247]">
+                  Tháng Mười Một
+                </span>
+              </div>
+
+              {/* 7-Column Calendar Grid */}
+              <div className="mt-4 px-2">
+                <div className="grid grid-cols-7 gap-y-2 text-center font-sans-soft text-[11.5px] font-bold text-[#523E2B]">
+                  {["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map((dayLabel) => (
+                    <span key={dayLabel}>{dayLabel}</span>
+                  ))}
+                </div>
+
+                <div className="mt-2.5 grid grid-cols-7 gap-y-2 text-center font-sans-soft text-[13px] font-medium text-[#523E2B]">
+                  {calendarCells.map((day, idx) => {
+                    const isHighlight = day === weddingConfig.calendar.highlightDay;
+                    const isPartyDay = day === weddingConfig.calendar.partyDay;
+                    return (
+                      <div
+                        key={idx}
+                        className="relative flex h-8 items-center justify-center"
                       >
-                        {day ?? ""}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+                        {isHighlight && (
+                          <WatercolorHeartStamp className="animate-heart-beat absolute h-8 w-8" />
+                        )}
+                        {isPartyDay && !isHighlight && (
+                          <span
+                            className="absolute h-7 w-7 rounded-full border border-dashed border-[#B5945B] bg-[#F1E8D7]/60"
+                            aria-hidden="true"
+                          />
+                        )}
+                        <span
+                          className={
+                            isHighlight
+                              ? "relative z-10 font-bold text-[#523E2B]"
+                              : isPartyDay
+                                ? "relative z-10 font-bold text-[#96743D]"
+                                : ""
+                          }
+                        >
+                          {day ?? ""}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
 
-              <div className="mt-4 flex items-center justify-center gap-4 font-sans-soft text-[11px] text-[#756350]">
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full border border-dashed border-[#B5945B] bg-[#F1E8D7]" />
-                  <span>28/11: Tiệc thân mật</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#B5945B]" />
-                  <span>29/11: Lễ Vu Quy</span>
-                </span>
+                {/* Calendar Legend */}
+                <div className="mt-3.5 flex items-center justify-center gap-4 border-t border-[#DFD4BF]/60 pt-3 font-sans-soft text-[11px] text-[#756350]">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full border border-dashed border-[#B5945B] bg-[#F1E8D7]" />
+                    <span>28/11: Tiệc thân mật</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#B5945B]" />
+                    <span>29/11: Lễ Vu Quy</span>
+                  </span>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -629,33 +641,7 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 11: "HỘP QUÀ MỪNG" (3D ANTIQUE-GOLD HEART GIFT BOX)
-           ============================================================ */}
-        {weddingConfig.gift.enabled && (
-          <section className="px-6 py-10 text-center">
-            <Reveal className="flex flex-col items-center">
-              <button
-                type="button"
-                onClick={() => setGiftModalOpen(true)}
-                className="group flex flex-col items-center focus:outline-none"
-                aria-label="Mở Hộp Quà Mừng"
-              >
-                <div className="animate-gift-wobble transition-transform group-hover:scale-105">
-                  <GiftHeartBox3D className="h-24 w-24" />
-                </div>
-                <span className="mt-2 font-display-serif text-[22px] font-semibold tracking-[0.06em] text-[#523E2B] transition group-hover:text-[#96743D]">
-                  Hộp Quà Mừng
-                </span>
-                <span className="mt-0.5 font-sans-soft text-[11px] text-[#756350]">
-                  Chạm để xem thông tin mừng cưới
-                </span>
-              </button>
-            </Reveal>
-          </section>
-        )}
-
-        {/* ============================================================
-            SECTION 12: FULL-BLEED CLOSING PHOTO + COUNTDOWN + CHAMPAGNE BAND
+            SECTION 11: FULL-BLEED CLOSING PHOTO + COUNTDOWN + CHAMPAGNE BAND
            ============================================================ */}
         <section className="relative w-full">
           <div className="relative aspect-[2/3] w-full overflow-hidden bg-[#EFEAE0]">
@@ -686,125 +672,22 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 13: OVERLAPPING RSVP CARD + ILLUSTRATED FOOTER
+            SECTION 12: ELEGANT ILLUSTRATED COUPLE FOOTER
            ============================================================ */}
-        <section className="relative z-20 -mt-9 px-6 pb-12">
-          <Reveal>
-            <div className="mx-auto w-full max-w-[360px] rounded-[10px] bg-white px-5 py-6 shadow-[0_14px_38px_rgba(61,46,31,0.12)] ring-1 ring-[#E6DCC8]">
-              <h3 className="text-center font-sans-soft text-[16px] font-bold text-[#523E2B]">
-                Xác nhận tham dự
-              </h3>
-
-              {rsvpSubmitted ? (
-                <div className="mt-5 flex flex-col items-center py-4 text-center">
-                  <CheckCircle2 className="h-10 w-10 text-[#96743D]" />
-                  <p className="mt-2.5 font-sans-soft text-sm font-bold text-[#523E2B]">
-                    Cảm ơn {rsvpName} đã xác nhận!
-                  </p>
-                  <p className="mt-1 font-sans-soft text-xs text-[#756350]">
-                    {rsvpStatus === "yes"
-                      ? `Hẹn gặp bạn (${rsvpCount} người) trong ngày vui của chúng mình nhé!`
-                      : "Rất tiếc vì bạn bận, cảm ơn bạn đã gửi lời nhắn tới hai vợ chồng!"}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setRsvpSubmitted(false)}
-                    className="mt-4 text-xs font-semibold text-[#96743D] underline"
-                  >
-                    Chỉnh sửa phản hồi
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleRsvpSubmit} className="mt-4 space-y-4">
-                  {/* Họ và tên */}
-                  <div>
-                    <label className="block font-sans-soft text-[12px] font-semibold text-[#523E2B]">
-                      Họ và tên
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={rsvpName}
-                      onChange={(e) => setRsvpName(e.target.value)}
-                      placeholder="Nhập tên của bạn"
-                      className="mt-1.5 w-full rounded-[4px] border border-[#DFD4BF] bg-[#FDFBF7] px-3 py-2 font-sans-soft text-[13px] text-[#3D2E1F] outline-none transition focus:border-[#B5945B] focus:bg-white"
-                    />
-                  </div>
-
-                  {/* Radio attendance */}
-                  <div>
-                    <p className="font-sans-soft text-[12px] font-semibold text-[#523E2B]">
-                      Bạn sẽ tham dự chứ?
-                    </p>
-                    <div className="mt-2 space-y-2 font-sans-soft text-[12.5px] text-[#523E2B]">
-                      <label className="flex cursor-pointer items-center gap-2">
-                        <input
-                          type="radio"
-                          name="rsvp-status"
-                          value="yes"
-                          checked={rsvpStatus === "yes"}
-                          onChange={() => setRsvpStatus("yes")}
-                          className="accent-[#96743D]"
-                        />
-                        <span>Có, tôi sẽ tham dự</span>
-                      </label>
-                      <label className="flex cursor-pointer items-center gap-2">
-                        <input
-                          type="radio"
-                          name="rsvp-status"
-                          value="no"
-                          checked={rsvpStatus === "no"}
-                          onChange={() => setRsvpStatus("no")}
-                          className="accent-[#96743D]"
-                        />
-                        <span>Tôi bận, rất tiếc không thể tham dự</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  {/* Guest count select */}
-                  {rsvpStatus === "yes" && (
-                    <div>
-                      <label className="block font-sans-soft text-[12px] font-semibold text-[#523E2B]">
-                        Số lượng người tham dự
-                      </label>
-                      <select
-                        value={rsvpCount}
-                        onChange={(e) => setRsvpCount(e.target.value)}
-                        className="mt-1.5 w-full rounded-[4px] border border-[#DFD4BF] bg-[#FDFBF7] px-3 py-2 font-sans-soft text-[13px] text-[#3D2E1F] outline-none transition focus:border-[#B5945B] focus:bg-white"
-                      >
-                        {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-                          <option key={n} value={String(n)}>
-                            {n} người
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-
-                  {/* Submit CTA (#B5945B Antique Gold) */}
-                  <button
-                    type="submit"
-                    className="w-full rounded-[4px] bg-[#B5945B] py-2.5 font-sans-soft text-[13.5px] font-bold text-white shadow-xs transition hover:bg-[#96743D] active:scale-[0.99]"
-                  >
-                    Gửi xác nhận
-                  </button>
-                </form>
-              )}
-            </div>
-          </Reveal>
-
-          {/* Warm Champagne-Gold Illustrated Bride & Groom Footer */}
-          <div className="mt-8 flex flex-col items-center text-center">
+        <footer className="relative z-20 px-6 py-12 text-center">
+          <div className="flex flex-col items-center text-center">
             <FooterCoupleHeart className="h-28 w-32" />
-            <p className="mt-1 font-display-serif text-[12px] font-semibold tracking-[0.22em] text-[#7A5D30]">
+            <p className="mt-2 font-display-serif text-[13px] font-semibold tracking-[0.22em] text-[#7A5D30]">
               {weddingConfig.couple.brideUpper} &amp; {weddingConfig.couple.groomUpper}
             </p>
-            <p className="mt-0.5 font-sans-soft text-[11px] tracking-[0.18em] text-[#8E7555]">
+            <p className="mt-1 font-sans-soft text-[11px] tracking-[0.18em] text-[#8E7555]">
               {weddingConfig.hero.dateDot}
             </p>
+            <p className="mt-3 font-script text-[20px] text-[#96743D]">
+              Trân trọng cảm ơn quý khách!
+            </p>
           </div>
-        </section>
+        </footer>
       </main>
 
       {/* Modals */}
@@ -814,7 +697,6 @@ export function WeddingInvitation114() {
         onClose={() => setLightboxIndex(null)}
         onChangeIndex={setLightboxIndex}
       />
-      <GiftModal open={giftModalOpen} onClose={() => setGiftModalOpen(false)} />
     </div>
   );
 }

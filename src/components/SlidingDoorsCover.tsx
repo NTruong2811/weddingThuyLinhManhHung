@@ -8,7 +8,7 @@ type DoorStage = "closed" | "opening" | "done";
 
 /**
  * Section 0 — Ivory & Gold-Foil Botanical Sliding Doors Opening Screen:
- * Faithfully echoes the front cover of Thùy Linh & Mạnh Hùng's printed wedding card
+ * Faithfully echoes the front cover of Thùy Linh & Mạnh Hưng's printed wedding card
  * ("THIỆP MỜI • WEDDING INVITATION • SAVE the DATE • 29.11.2026" + Gold Foil H & L Wreath + "KÍNH MỜI").
  * Tapping anywhere synchronously unlocks & starts background music and parts the doors horizontally.
  */
@@ -49,7 +49,7 @@ export function SlidingDoorsCover({
       onClick={handleOpen}
       role="dialog"
       aria-modal="true"
-      aria-label="Mở thiệp cưới Thùy Linh và Mạnh Hùng"
+      aria-label={`Mở thiệp cưới ${weddingConfig.couple.brideDisplay} và ${weddingConfig.couple.groomDisplay}`}
       className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden ${
         isOpening ? "pointer-events-none" : "cursor-pointer"
       }`}
@@ -114,12 +114,12 @@ export function SlidingDoorsCover({
             />
           </button>
 
-          {/* Dotted "KÍNH MỜI:" line echoing the printed invitation front cover */}
-          <div className="mt-1 flex w-full max-w-[270px] items-baseline justify-center gap-2">
+          {/* Dotted "KÍNH MỜI:" line echoing the printed invitation front cover - single line */}
+          <div className="mt-2 flex w-full max-w-[340px] items-baseline justify-center gap-2 px-3">
             <span className="shrink-0 font-serif-editorial text-[12px] font-semibold tracking-[0.12em] text-[#5C4631]">
               KÍNH MỜI:
             </span>
-            <span className="flex-1 border-b border-dotted border-[#8E7555] pb-0.5 font-script text-[23px] leading-none text-[#523E2B]">
+            <span className="whitespace-nowrap border-b border-dotted border-[#8E7555] pb-0.5 font-script text-[20px] leading-none text-[#523E2B]">
               {guestName || weddingConfig.defaultGuestName}
             </span>
           </div>
@@ -127,9 +127,6 @@ export function SlidingDoorsCover({
           <span className="mt-6 rounded-full bg-[#96743D] px-6 py-2.5 font-sans-soft text-[12px] font-semibold tracking-wide text-white shadow-[0_6px_20px_rgba(82,62,43,0.28)]">
             Chạm để mở thiệp cưới
           </span>
-          <p className="mt-2 font-sans-soft text-[11px] text-[#7A6247]">
-            Kèm nhạc nền đám cưới
-          </p>
         </div>
       </div>
     </div>
