@@ -48,26 +48,25 @@ export const weddingConfig = {
     venueName: "NHÀ VĂN HOÁ THÔN TÊ QUẢ",
     venueAddress: "",
   },
-  /** Sự kiện 2: Lễ Vu Quy (Chủ Nhật 29.11.2026 - 14:30) + Thẻ địa điểm & Bản đồ */
+  /** Sự kiện 2: Lễ Thành Hôn (Chủ Nhật 29.11.2026 - 14:30) + Thẻ địa điểm & Bản đồ */
   ceremony: {
-    title: "LỄ VU QUY",
+    title: "LỄ THÀNH HÔN",
     time: "14:30",
     dayOfWeek: "Chủ Nhật",
     day: "29",
     monthText: "Tháng 11",
     yearText: "Năm 2026",
     lunarDate: "(Tức ngày 21 tháng 10 năm Bính Ngọ)",
-    venueName: "TƯ GIA NHÀ GÁI",
-    hallName: "- SỐ 11 XÓM ĐÔNG -",
-    address: "Phượng Thiên, Tam Hưng, Hà Nội",
+    venueName: "TƯ GIA NHÀ TRAI",
+    hallName: "",
+    address: "Thôn Tê Quả, Tam Hưng, Hà Nội",
     mapEmbedUrl:
-      "https://maps.google.com/maps?q=20.8959618,105.8000031&t=&z=16&ie=UTF8&iwloc=&output=embed",
-    mapDirectUrl:
-      "https://www.google.com/maps/place/20%C2%B053'45.5%22N+105%C2%B048'00.0%22E/@20.8960125,105.7998858,615m/data=!3m1!1e3!4m4!3m3!8m2!3d20.8959618!4d105.8000031?entry=ttu",
+    "https://maps.google.com/maps?q=20.8891837,105.7793253&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    mapDirectUrl: "https://maps.app.goo.gl/9Vnd5i9c4DpZNEy28",
   },
   timeline: [
     { time: "17h30", label: "Tiệc Thân Mật (28/11)", icon: "banquet" as const },
-    { time: "14:30", label: "Lễ Vu Quy (29/11)", icon: "arch" as const },
+    { time: "14:30", label: "Lễ Thành Hôn (29/11)", icon: "arch" as const },
   ],
   calendar: {
     year: 2026,

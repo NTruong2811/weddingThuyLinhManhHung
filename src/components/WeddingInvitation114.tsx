@@ -444,9 +444,11 @@ export function WeddingInvitation114() {
                 <p className="font-serif-editorial text-[18px] font-bold uppercase tracking-[0.12em] text-[#3D2E1F]">
                   {weddingConfig.ceremony.venueName}
                 </p>
-                <p className="mt-1 font-serif-editorial text-[14px] font-semibold tracking-[0.16em] text-[#96743D]">
-                  {weddingConfig.ceremony.hallName}
-                </p>
+                {weddingConfig.ceremony.hallName && (
+                  <p className="mt-1 font-serif-editorial text-[14px] font-semibold tracking-[0.16em] text-[#96743D]">
+                    {weddingConfig.ceremony.hallName}
+                  </p>
+                )}
                 <p className="mt-1.5 font-sans-soft text-[13px] font-medium leading-relaxed text-[#523E2B]">
                   {weddingConfig.ceremony.address}
                 </p>
