@@ -100,7 +100,7 @@ export const weddingConfig = {
       accountNumber: "9876543210",
     },
   },
-  audioSrc: "/audio/wedding-music1.mp3",
+  audioSrc: "/audio/westlife-my-love.mp3",
   /** Bộ ảnh cưới chính thức của Thùy Linh & Kiều Mạnh Hưng (WebP tối ưu) */
   photos: {
     hero: "/images/photos/HAU07788.webp",
