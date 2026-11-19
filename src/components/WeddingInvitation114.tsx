@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { MapPin } from "lucide-react";
+import { Check, Copy, MapPin, QrCode } from "lucide-react";
 import { weddingConfig } from "@/config/wedding";
 import { useWeddingMusic } from "@/hooks/useWeddingMusic";
 import {
@@ -9,6 +9,7 @@ import {
   CoupleDividerIllustration,
   DoubleHeartMini,
   FooterCoupleHeart,
+  GiftHeartBox3D,
   HLMonogramWreath,
   RoseStemSketch,
   WatercolorBlossomCorner,
@@ -21,6 +22,7 @@ import { Reveal } from "./Reveal";
 import { AlbumCarousel } from "./AlbumCarousel";
 import { Countdown } from "./Countdown";
 import { Lightbox } from "./Lightbox";
+import { GiftModal } from "./GiftModal";
 
 function buildCalendarCells(year: number, month1Based: number) {
   // Monday-first Vietnamese calendar: T2 T3 T4 T5 T6 T7 CN
@@ -41,6 +43,18 @@ export function WeddingInvitation114() {
 
   const [guestName, setGuestName] = useState<string | undefined>(undefined);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [giftModalOpen, setGiftModalOpen] = useState(false);
+  const [copiedAcc, setCopiedAcc] = useState<string | null>(null);
+
+  const handleCopyAcc = async (accountNumber: string) => {
+    try {
+      await navigator.clipboard.writeText(accountNumber);
+      setCopiedAcc(accountNumber);
+      setTimeout(() => setCopiedAcc(null), 2000);
+    } catch {
+      // ignore
+    }
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -346,12 +360,16 @@ export function WeddingInvitation114() {
                 Tại
               </p>
               <span className="mt-1 h-[1px] w-14 bg-[#8E7555]/70" />
-              <p className="mt-2.5 font-sans-soft text-[13.5px] font-bold uppercase tracking-[0.08em] text-[#523E2B]">
-                {weddingConfig.party.venueName}
-              </p>
-              <p className="mt-0.5 font-sans-soft text-[12px] text-[#6B553E]">
-                {weddingConfig.party.venueAddress}
-              </p>
+              {weddingConfig.party.venueName && (
+                <p className="mt-2.5 font-sans-soft text-[13.5px] font-bold uppercase tracking-[0.08em] text-[#523E2B]">
+                  {weddingConfig.party.venueName}
+                </p>
+              )}
+              {weddingConfig.party.venueAddress && (
+                <p className="mt-0.5 font-sans-soft text-[12px] text-[#6B553E]">
+                  {weddingConfig.party.venueAddress}
+                </p>
+              )}
             </div>
 
             {/* Warm champagne/walnut couple divider illustration */}
@@ -641,7 +659,96 @@ export function WeddingInvitation114() {
         </section>
 
         {/* ============================================================
-            SECTION 11: FULL-BLEED CLOSING PHOTO + COUNTDOWN + CHAMPAGNE BAND
+            SECTION 11: "HỘP QUÀ MỪNG" (QR MỪNG CƯỚI CHÚ RỂ KIỀU MẠNH HƯNG)
+           ============================================================ */}
+        {weddingConfig.gift.enabled && (
+          <section className="px-5 py-9 text-center">
+            <Reveal className="flex flex-col items-center">
+              <span className="h-[1px] w-24 bg-[#8E7555]/80" />
+              <div className="mt-3">
+                <GiftHeartBox3D className="mx-auto h-16 w-16" />
+              </div>
+              <h2 className="mt-2 font-script text-[36px] font-medium leading-none text-[#523E2B]">
+                {weddingConfig.gift.title}
+              </h2>
+              <p className="mt-1.5 font-sans-soft text-[11px] font-semibold uppercase tracking-[0.16em] text-[#96743D]">
+                {weddingConfig.gift.subtitle}
+              </p>
+              <p className="mx-auto mt-2 max-w-[320px] font-sans-soft text-[12.5px] italic leading-relaxed text-[#756350]">
+                {weddingConfig.gift.message}
+              </p>
+
+              {/* QR Card Container */}
+              <div className="mt-6 w-full max-w-[340px] overflow-hidden rounded-2xl border border-[#DFD4BF] bg-white p-5 shadow-[0_4px_20px_rgba(82,62,43,0.07)] ring-1 ring-[#FAF8F3]">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF5EC] px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-[#96743D]">
+                  <DoubleHeartMini className="h-3.5 w-3.5" />
+                  <span>{weddingConfig.gift.groomBank.role}</span>
+                </div>
+
+                {/* Scannable VietQR Card Image */}
+                <div
+                  onClick={() => setGiftModalOpen(true)}
+                  className="group relative mx-auto mt-4 w-full max-w-[230px] cursor-pointer overflow-hidden rounded-xl border border-[#EFE8DC] bg-white p-2 shadow-xs transition hover:border-[#B5945B]"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={weddingConfig.gift.groomBank.qrImage}
+                    alt="Mã QR mừng cưới Kiều Mạnh Hưng - MBBank"
+                    className="h-auto w-full object-contain transition duration-300 group-hover:scale-[1.02]"
+                  />
+                  <div className="mt-1.5 flex items-center justify-center gap-1 text-[11px] font-medium text-[#8E7555]">
+                    <QrCode className="h-3.5 w-3.5" />
+                    <span>Chạm để phóng to mã QR</span>
+                  </div>
+                </div>
+
+                {/* Account Details Box */}
+                <div className="mt-4 rounded-xl bg-[#FAF8F3] p-3.5 text-left text-[12.5px] text-[#523E2B]">
+                  <div className="flex justify-between py-0.5">
+                    <span className="text-[#756350]">Ngân hàng:</span>
+                    <span className="font-semibold text-[#523E2B]">
+                      {weddingConfig.gift.groomBank.bankName}
+                    </span>
+                  </div>
+                  <div className="flex justify-between py-0.5">
+                    <span className="text-[#756350]">Chủ tài khoản:</span>
+                    <span className="font-bold text-[#523E2B]">
+                      {weddingConfig.gift.groomBank.accountName}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between border-t border-[#EBE3D3] pt-2">
+                    <div>
+                      <span className="block text-[11px] text-[#756350]">Số tài khoản:</span>
+                      <span className="font-mono text-[16px] font-bold tracking-wider text-[#96743D]">
+                        {weddingConfig.gift.groomBank.accountNumber}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyAcc(weddingConfig.gift.groomBank.accountNumber)}
+                      className="inline-flex items-center gap-1 rounded-full bg-[#B5945B] px-3.5 py-1.5 font-sans-soft text-[12px] font-bold text-white shadow-xs transition hover:bg-[#96743D] active:scale-95"
+                    >
+                      {copiedAcc === weddingConfig.gift.groomBank.accountNumber ? (
+                        <>
+                          <Check className="h-3.5 w-3.5" />
+                          <span>Đã chép</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5" />
+                          <span>Sao chép</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </section>
+        )}
+
+        {/* ============================================================
+            SECTION 12: FULL-BLEED CLOSING PHOTO + COUNTDOWN + CHAMPAGNE BAND
            ============================================================ */}
         <section className="relative w-full">
           <div className="relative aspect-[2/3] w-full overflow-hidden bg-[#EFEAE0]">
@@ -697,6 +804,7 @@ export function WeddingInvitation114() {
         onClose={() => setLightboxIndex(null)}
         onChangeIndex={setLightboxIndex}
       />
+      <GiftModal open={giftModalOpen} onClose={() => setGiftModalOpen(false)} />
     </div>
   );
 }

@@ -25,18 +25,21 @@ export function GiftModal({
     }
   };
 
-  const accounts = [weddingConfig.gift.brideBank, weddingConfig.gift.groomBank];
+  const accounts = [
+    weddingConfig.gift.groomBank,
+    ...(weddingConfig.gift.brideBank.qrImage ? [weddingConfig.gift.brideBank] : []),
+  ];
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Hộp Quà Mừng Cưới"
     >
       <div
-        className="relative w-full max-w-[390px] overflow-hidden rounded-2xl bg-[#FAF8F3] shadow-2xl ring-1 ring-[#DFD4BF]"
+        className="relative max-h-[90vh] w-full max-w-[380px] overflow-y-auto rounded-2xl bg-[#FAF8F3] shadow-2xl ring-1 ring-[#DFD4BF]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -61,32 +64,44 @@ export function GiftModal({
         </div>
 
         {/* Accounts */}
-        <div className="space-y-3.5 p-5">
+        <div className="space-y-4 p-5">
           {accounts.map((acc) => {
             const isCopied = copiedAcc === acc.accountNumber;
             return (
               <div
                 key={acc.role}
-                className="rounded-xl border border-[#E6DCC8] bg-white p-4 shadow-[0_2px_10px_rgba(82,62,43,0.05)]"
+                className="rounded-xl border border-[#E6DCC8] bg-white p-4 text-center shadow-[0_2px_10px_rgba(82,62,43,0.05)]"
               >
-                <p className="font-serif-editorial text-xs font-bold uppercase tracking-wider text-[#96743D]">
-                  {acc.role}
-                </p>
-                <div className="mt-2 space-y-1 text-xs text-[#523E2B]">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF5EC] px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-[#96743D]">
+                  <span>{acc.role}</span>
+                </div>
+
+                {acc.qrImage && (
+                  <div className="mx-auto my-3 w-52 overflow-hidden rounded-xl border border-[#E6DCC8] bg-white p-2 shadow-xs">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={acc.qrImage}
+                      alt={`Mã QR ${acc.role}`}
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                )}
+
+                <div className="mt-3 space-y-1 rounded-lg bg-[#FAF8F3] p-3 text-left text-xs text-[#523E2B]">
                   <p>
                     Ngân hàng: <span className="font-semibold">{acc.bankName}</span>
                   </p>
                   <p>
                     Chủ TK: <span className="font-semibold">{acc.accountName}</span>
                   </p>
-                  <div className="flex items-center justify-between pt-1">
-                    <p className="font-mono text-sm font-bold tracking-wider text-[#3D2E1F]">
+                  <div className="mt-1 flex items-center justify-between border-t border-[#EBE3D3] pt-2">
+                    <p className="font-mono text-sm font-bold tracking-wider text-[#96743D]">
                       {acc.accountNumber}
                     </p>
                     <button
                       type="button"
                       onClick={() => copyNumber(acc.accountNumber)}
-                      className="inline-flex items-center gap-1 rounded-full bg-[#E6DCC8] px-3 py-1 text-[11px] font-semibold text-[#523E2B] transition hover:bg-[#96743D] hover:text-white"
+                      className="inline-flex items-center gap-1 rounded-full bg-[#B5945B] px-3 py-1.5 text-[11px] font-semibold text-white shadow-xs transition hover:bg-[#96743D] active:scale-95"
                     >
                       {isCopied ? (
                         <>

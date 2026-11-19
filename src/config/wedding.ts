@@ -24,7 +24,7 @@ export const weddingConfig = {
     },
   },
   hero: {
-    time: "14:00",
+    time: "14:30",
     dayOfWeek: "CHỦ NHẬT",
     dayMonth: "29.11",
     yearTop: "20",
@@ -35,23 +35,23 @@ export const weddingConfig = {
     quoteLine2: "Yêu người vừa ý, cưới người mình thương",
   },
   defaultGuestName: "Quý Khách & Gia Đình",
-  /** Sự kiện 1: Bữa Tiệc Thân Mật (Thứ Bảy 28.11.2026 - 17h00) */
+  /** Sự kiện 1: Bữa Tiệc Thân Mật (Thứ Bảy 28.11.2026 - 17h30) */
   party: {
     title: "BỮA TIỆC THÂN MẬT",
     subtitle: "MỪNG LỄ THÀNH HÔN CÙNG GIA ĐÌNH",
-    time: "17h00",
+    time: "17h30",
     dayOfWeek: "Thứ Bảy",
     day: "28",
     monthText: "Tháng 11",
     yearText: "Năm 2026",
     lunarDate: "(Tức ngày 20 tháng 10 năm Bính Ngọ)",
-    venueName: "TƯ GIA NHÀ GÁI",
-    venueAddress: "Số 11 Xóm Đông - Phượng Thiên - Tam Hưng - Hà Nội",
+    venueName: "NHÀ VĂN HOÁ THÔN TÊ QUẢ",
+    venueAddress: "",
   },
-  /** Sự kiện 2: Lễ Vu Quy (Chủ Nhật 29.11.2026 - 14h00) + Thẻ địa điểm & Bản đồ */
+  /** Sự kiện 2: Lễ Vu Quy (Chủ Nhật 29.11.2026 - 14:30) + Thẻ địa điểm & Bản đồ */
   ceremony: {
     title: "LỄ VU QUY",
-    time: "14h00",
+    time: "14:30",
     dayOfWeek: "Chủ Nhật",
     day: "29",
     monthText: "Tháng 11",
@@ -61,13 +61,13 @@ export const weddingConfig = {
     hallName: "- SỐ 11 XÓM ĐÔNG -",
     address: "Phượng Thiên, Tam Hưng, Hà Nội",
     mapEmbedUrl:
-      "https://maps.google.com/maps?q=Th%C3%B4n+Ph%C6%B0%E1%BB%A3ng+Thi%C3%AAn,+Tam+H%C6%B0ng,+Thanh+Oai,+H%C3%A0+N%E1%BB%99i&t=&z=15&ie=UTF8&iwloc=&output=embed",
+      "https://maps.google.com/maps?q=20.8959618,105.8000031&t=&z=16&ie=UTF8&iwloc=&output=embed",
     mapDirectUrl:
-      "https://www.google.com/maps/search/?api=1&query=Th%C3%B4n+Ph%C6%B0%E1%BB%A3ng+Thi%C3%AAn,+Tam+H%C6%B0ng,+Thanh+Oai,+H%C3%A0+N%E1%BB%99i",
+      "https://www.google.com/maps/place/20%C2%B053'45.5%22N+105%C2%B048'00.0%22E/@20.8960125,105.7998858,615m/data=!3m1!1e3!4m4!3m3!8m2!3d20.8959618!4d105.8000031?entry=ttu",
   },
   timeline: [
-    { time: "17h00", label: "Tiệc Thân Mật (28/11)", icon: "banquet" as const },
-    { time: "14h00", label: "Lễ Vu Quy (29/11)", icon: "arch" as const },
+    { time: "17h30", label: "Tiệc Thân Mật (28/11)", icon: "banquet" as const },
+    { time: "14:30", label: "Lễ Vu Quy (29/11)", icon: "arch" as const },
   ],
   calendar: {
     year: 2026,
@@ -76,8 +76,8 @@ export const weddingConfig = {
     highlightDay: 29,
     bannerText: "11.2026",
   },
-  /** ISO 8601 timestamp (+07:00) đếm ngược tới Lễ Vu Quy 14:00 ngày 29.11.2026 */
-  countdownTargetIso: "2026-11-29T14:00:00+07:00",
+  /** ISO 8601 timestamp (+07:00) đếm ngược tới Lễ Vu Quy 14:30 ngày 29.11.2026 */
+  countdownTargetIso: "2026-11-29T14:30:00+07:00",
   closing: {
     line1:
       "Tiệc cưới của chúng mình sẽ thật sự trọn vẹn khi có bạn cùng sẻ chia niềm vui và chứng kiến khoảnh khắc đặc biệt này,",
@@ -86,18 +86,24 @@ export const weddingConfig = {
     line3: "Hẹn gặp bạn trong ngày trọng đại của chúng mình",
   },
   gift: {
-    enabled: false,
-    brideBank: {
-      role: "Mừng cưới Cô Dâu",
-      bankName: "Vietcombank",
-      accountName: "NGUYEN THUY LINH",
-      accountNumber: "0123456789",
-    },
+    enabled: true,
+    title: "Hộp Quà Mừng",
+    subtitle: "MỪNG CƯỚI ĐÔI UYÊN ƯƠNG",
+    message:
+      "Cảm ơn tình cảm và lời chúc phúc của Quý vị dành cho hai vợ chồng!",
     groomBank: {
-      role: "Mừng cưới Chú Rể",
-      bankName: "Techcombank",
-      accountName: "KIEU MANH HUNG",
-      accountNumber: "9876543210",
+      role: "Mừng Cưới Chú Rể",
+      bankName: "MBBank (Ngân Hàng Quân Đội)",
+      accountName: "KIỀU MẠNH HƯNG",
+      accountNumber: "0984111197",
+      qrImage: "/images/photos/qr-groom.webp",
+    },
+    brideBank: {
+      role: "Mừng Cưới Cô Dâu",
+      bankName: "Vietcombank",
+      accountName: "NGUYỄN THÙY LINH",
+      accountNumber: "0123456789",
+      qrImage: "",
     },
   },
   audioSrc: "/audio/westlife-my-love.mp3",
