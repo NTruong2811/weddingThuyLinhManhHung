@@ -11,8 +11,6 @@ import { weddingConfig } from "@/config/wedding";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   variable: "--font-playfair",
   display: "swap",
 });
@@ -20,7 +18,6 @@ const playfair = Playfair_Display({
 const cormorant = Cormorant_Garamond({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
 });
